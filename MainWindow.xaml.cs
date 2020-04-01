@@ -6,6 +6,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -47,6 +48,10 @@ namespace Pixeval.AutoUpdater
             try
             {
                 await using var memory = await Download(ResourceUri, new Progress<double>(p => DownloadProgressIndicator.Value = p), CancellationTokenSource.Token);
+                if (memory.Checksum<SHA256Managed>() != (await GetRemoteChecksum()).ToLower())
+                {
+                    throw new ChecksumFailedException("文件hash校验失败");
+                }
                 RmFiles();
                 await using (var fileStream = new FileStream(ZipTmpPath, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
                     memory.WriteTo(fileStream);
@@ -66,6 +71,11 @@ namespace Pixeval.AutoUpdater
             {
                 Exit(ex.ToString());
             }
+        }
+
+        private static Task<string> GetRemoteChecksum()
+        {
+            return new HttpClient().GetStringAsync("http://47.95.218.243/Pixeval/checksum.txt");
         }
 
         private static void RmFiles()
@@ -134,7 +144,7 @@ namespace Pixeval.AutoUpdater
                 cancellationToken.ThrowIfCancellationRequested();
                 totalRead += bytesRead;
                 await memoryStream.WriteAsync(byteBuffer, 0, (int)bytesRead, cancellationToken);
-                progress.Report(totalRead / (double)contentLength);
+                progress.Report(totalRead / (double) contentLength);
             }
 
             ArrayPool<byte>.Shared.Return(byteBuffer, true);

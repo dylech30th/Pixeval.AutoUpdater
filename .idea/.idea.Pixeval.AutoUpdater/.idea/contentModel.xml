@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\NotSystem\Coding\projects\visualstudio\csharp\Pixeval.AutoUpdater" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
+      <e p="App.xaml" t="Include" />
+      <e p="App.xaml.cs" t="Include" />
+      <e p="AssemblyInfo.cs" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="ChecksumFailedException.cs" t="Include" />
+      <e p="Cipher.cs" t="Include" />
+      <e p="LICENSE" t="Include" />
+      <e p="MainWindow.xaml" t="Include" />
+      <e p="MainWindow.xaml.cs" t="Include" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.0" t="Include">
+            <e p="App.g.cs" t="Include" />
+            <e p="MainWindow.g.cs" t="Include" />
+            <e p="Pixeval.AutoUpdater.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Pixeval.AutoUpdater.csproj" t="IncludeRecursive" />
+      <e p="Pixeval.AutoUpdater.sln" t="IncludeFlat" />
+      <e p="README.md" t="Include" />
+      <e p="Resources" t="Include">
+        <e p="pxlogo.ico" t="Include" />
+      </e>
+    </e>
+    <e p="C:\Users\26532\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\26532\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Pixeval.AutoUpdater.-1766308754.00" t="ExcludeRecursive" />
+  </component>
+</project>
